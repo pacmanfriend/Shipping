@@ -1,7 +1,10 @@
+using Shipping.Application;
 using Shipping.Web.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 {
+    builder.Services.AddApplicationServices();
+
     builder.Services.AddEndpointsApiExplorer();
 }
 
