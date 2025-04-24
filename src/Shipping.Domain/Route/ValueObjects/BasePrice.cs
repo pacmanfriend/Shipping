@@ -13,13 +13,13 @@ public record BasePrice
     public string Currency { get; }
     public double Value { get; }
 
-    public static Result<BasePrice?> FromRub(double value)
+    public static DomainResult<BasePrice?> FromRub(double value)
     {
         if (value < 0.0)
         {
-            return Result<BasePrice?>.Fail("Price cannot be negative");
+            return DomainResult<BasePrice?>.Fail("Price cannot be negative");
         }
 
-        return Result<BasePrice?>.Ok(new BasePrice(currency: "RUB", value: value));
+        return DomainResult<BasePrice?>.Ok(new BasePrice(currency: "RUB", value: value));
     }
 }

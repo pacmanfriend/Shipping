@@ -1,3 +1,6 @@
+using MediatR;
+using Shipping.Application.Routes.Queries.GetAllRoutes;
+
 namespace Shipping.Web.Endpoints;
 
 public static class RoutesEndpoints
@@ -13,22 +16,24 @@ public static class RoutesEndpoints
         group.MapDelete("", DeleteRoute).WithName(nameof(DeleteRoute));
     }
 
-    public static async Task<IResult> GetAllRoutes()
+    public static async Task<IResult> GetAllRoutes(IMediator mediator)
+    {
+        var routes = await mediator.Send(new GetAllRoutesQuery());
+
+        return Results.Ok(routes);
+    }
+
+    public static async Task<IResult> CreateRoute(IMediator mediator)
     {
         return Results.Ok();
     }
 
-    public static async Task<IResult> CreateRoute()
+    public static async Task<IResult> UpdateRoute(IMediator mediator)
     {
         return Results.Ok();
     }
 
-    public static async Task<IResult> UpdateRoute()
-    {
-        return Results.Ok();
-    }
-
-    public static async Task<IResult> DeleteRoute()
+    public static async Task<IResult> DeleteRoute(IMediator mediator)
     {
         return Results.Ok();
     }

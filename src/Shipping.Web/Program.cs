@@ -15,7 +15,7 @@ var app = builder.Build();
 
     app.MapRoutesEndpoints();
 
-    app.MapGet("/", () => "Hello World!");
+    app.MapGet("/", () => "Welcome to the Shipping!");
 }
 
 app.Run();

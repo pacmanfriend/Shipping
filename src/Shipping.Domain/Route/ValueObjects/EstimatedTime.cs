@@ -11,8 +11,8 @@ public record EstimatedTime
 
     public TimeSpan Value { get; }
 
-    public static Result<EstimatedTime?> New(TimeSpan value)
+    public static DomainResult<EstimatedTime?> New(TimeSpan value)
     {
-        return Result<EstimatedTime?>.Ok(new EstimatedTime(value: value));
+        return DomainResult<EstimatedTime?>.Ok(new EstimatedTime(value: value));
     }
 }

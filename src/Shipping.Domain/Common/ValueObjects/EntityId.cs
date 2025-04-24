@@ -14,18 +14,18 @@ public record EntityId
 
     public Guid Value { get; }
 
-    public static Result<EntityId> New()
+    public static DomainResult<EntityId> New()
     {
-        return Result<EntityId>.Ok(new EntityId());
+        return DomainResult<EntityId>.Ok(new EntityId());
     }
 
-    public static Result<EntityId?> FromString(string value)
+    public static DomainResult<EntityId?> FromString(string value)
     {
         if (!Guid.TryParse(value, out Guid guid))
         {
-            return Result<EntityId?>.Fail("Invalid entity id");
+            return DomainResult<EntityId?>.Fail("Invalid entity id");
         }
 
-        return Result<EntityId?>.Ok(new EntityId(value: guid));
+        return DomainResult<EntityId?>.Ok(new EntityId(value: guid));
     }
 }

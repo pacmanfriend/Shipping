@@ -11,13 +11,13 @@ public record CityName
 
     public string Name { get; }
 
-    public static Result<CityName?> New(string name)
+    public static DomainResult<CityName?> New(string name)
     {
         if (string.IsNullOrEmpty(name))
         {
-            return Result<CityName?>.Fail("City name is empty");
+            return DomainResult<CityName?>.Fail("City name is empty");
         }
 
-        return Result<CityName?>.Ok(new CityName(name: name));
+        return DomainResult<CityName?>.Ok(new CityName(name: name));
     }
 }

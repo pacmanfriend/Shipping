@@ -11,13 +11,13 @@ public record RouteDistance
 
     public double Value { get; init; }
 
-    public static Result<RouteDistance?> New(double value)
+    public static DomainResult<RouteDistance?> New(double value)
     {
         if (value < 0.0)
         {
-            return Result<RouteDistance?>.Fail("Distance is less than zero");
+            return DomainResult<RouteDistance?>.Fail("Distance is less than zero");
         }
 
-        return Result<RouteDistance>.Ok(new RouteDistance(value))!;
+        return DomainResult<RouteDistance>.Ok(new RouteDistance(value))!;
     }
 }
