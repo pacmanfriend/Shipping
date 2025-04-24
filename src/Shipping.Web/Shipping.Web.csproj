@@ -6,4 +6,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Shipping.Application\Shipping.Application.csproj" />
+      <ProjectReference Include="..\Shipping.Domain\Shipping.Domain.csproj" />
+      <ProjectReference Include="..\Shipping.Infrastructure\Shipping.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Update="appsettings.Development.json">
+        <DependentUpon>appsettings.json</DependentUpon>
+      </Content>
+    </ItemGroup>
+
 </Project>
