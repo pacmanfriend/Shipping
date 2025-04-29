@@ -1,5 +1,3 @@
-using Shipping.Domain.Common;
-
 namespace Shipping.Domain.Route.ValueObjects;
 
 public record RouteDistance
@@ -13,18 +11,8 @@ public record RouteDistance
         Dimension = dimension;
     }
 
-    static DomainResult<RouteDistance?> New(double value, string dimension)
+    public static RouteDistance FromKilometers(double kilometers)
     {
-        if (value < 0.0)
-        {
-            return DomainResult<RouteDistance?>.Fail("Distance is less than zero");
-        }
-
-        return DomainResult<RouteDistance>.Ok(new RouteDistance(value, dimension))!;
-    }
-
-    public static DomainResult<RouteDistance?> FromKilometers(double kilometers)
-    {
-        return New(kilometers, "Kilometers");
+        return new RouteDistance(kilometers, "Kilometers");
     }
 }

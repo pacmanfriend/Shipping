@@ -4,15 +4,15 @@ namespace Shipping.Domain.Route.ValueObjects;
 
 public record EstimatedTime
 {
+    public TimeSpan Value { get; }
+
     private EstimatedTime(TimeSpan value)
     {
         Value = value;
     }
 
-    public TimeSpan Value { get; }
-
-    public static DomainResult<EstimatedTime?> New(TimeSpan value)
+    public static EstimatedTime New(TimeSpan value)
     {
-        return DomainResult<EstimatedTime?>.Ok(new EstimatedTime(value: value));
+        return new EstimatedTime(value);
     }
 }

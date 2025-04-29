@@ -14,48 +14,80 @@ public class Route
     public RouteDistance RouteDistance { get; private set; }
     public Price BasePrice { get; private set; }
 
-    private Route()
+    public Route()
     {
     }
 
     public class Builder
     {
         private readonly Route _route = new Route();
-        public List<string> Errors { get; private set; } = [];
+
+        public Builder WithEmptyId()
+        {
+            var entityId = EntityId.FromGuid(Guid.Empty);
+
+            _route.Id = entityId;
+
+            return this;
+        }
 
         public Builder WithNewId()
         {
+            var entityId = EntityId.FromGuid(Guid.NewGuid());
+
             return this;
         }
 
         public Builder WithTitle(string title)
         {
+            var routeTitle = RouteTitle.New(title);
+
+            _route.Title = routeTitle;
+
             return this;
         }
 
         public Builder WithDestination(string from, string to)
         {
+            var cityFrom = CityName.New(from);
+            var cityTo = CityName.New(to);
+
+            _route.From = cityFrom;
+            _route.To = cityTo;
+
             return this;
         }
 
         public Builder WithDistance(double distance, string dimension)
         {
+            var routeDistance = RouteDistance.FromKilometers(distance);
+
+            _route.RouteDistance = routeDistance;
+
             return this;
         }
 
-        public Builder WithEstimatedTime(TimeSpan estimatedTime)
+        public Builder WithEstimatedTime(TimeSpan time)
         {
+            var estimatedTime = EstimatedTime.New(time);
+
+            _route.EstimatedTime = estimatedTime;
+
             return this;
         }
 
         public Builder WithPrice(double value, string currency)
         {
+            var price = Price.FromRub(value);
+
+            _route.BasePrice = price;
+
             return this;
         }
 
-        public DomainResult<Route> Build()
+        public Route Build()
         {
-            return DomainResult<Route>.Ok(_route);
+            return _route;
         }
     }
 }

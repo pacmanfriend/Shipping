@@ -4,20 +4,15 @@ namespace Shipping.Domain.Route.ValueObjects;
 
 public record RouteTitle
 {
+    public string Value { get; }
+
     private RouteTitle(string value)
     {
         Value = value;
     }
 
-    public string Value { get; }
-
-    public static DomainResult<RouteTitle?> New(string value)
+    public static RouteTitle New(string value)
     {
-        if (string.IsNullOrEmpty(value))
-        {
-            return DomainResult<RouteTitle?>.Fail("Route title is empty");
-        }
-
-        return DomainResult<RouteTitle?>.Ok(new RouteTitle(value));
+        return new RouteTitle(value);
     }
 }

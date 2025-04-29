@@ -2,30 +2,25 @@ namespace Shipping.Domain.Common.ValueObjects;
 
 public record EntityId
 {
-    private EntityId()
-    {
-        Value = Guid.NewGuid();
-    }
+    public Guid Value { get; }
 
     private EntityId(Guid value)
     {
         Value = value;
     }
 
-    public Guid Value { get; }
-
-    public static DomainResult<EntityId> New()
+    public static EntityId New()
     {
-        return DomainResult<EntityId>.Ok(new EntityId());
+        return new(Guid.NewGuid());
     }
 
-    public static DomainResult<EntityId?> FromString(string value)
+    public static EntityId FromString(string id)
     {
-        if (!Guid.TryParse(value, out Guid guid))
-        {
-            return DomainResult<EntityId?>.Fail("Invalid entity id");
-        }
+        return new EntityId(Guid.Parse(id));
+    }
 
-        return DomainResult<EntityId?>.Ok(new EntityId(value: guid));
+    public static EntityId FromGuid(Guid id)
+    {
+        return new EntityId(id);
     }
 }
