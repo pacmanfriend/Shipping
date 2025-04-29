@@ -15,6 +15,6 @@ public class CreateRouteCommandHandler : IRequestHandler<CreateRouteCommand, Ent
 
     public Task<EntityId> Handle(CreateRouteCommand request, CancellationToken cancellationToken)
     {
-        
+        var route = new Route.Builder()
     }
 }

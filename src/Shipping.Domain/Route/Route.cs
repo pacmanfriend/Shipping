@@ -12,7 +12,7 @@ public class Route
     public CityName To { get; private set; }
     public EstimatedTime EstimatedTime { get; private set; }
     public RouteDistance RouteDistance { get; private set; }
-    public BasePrice Price { get; private set; }
+    public Price BasePrice { get; private set; }
 
     private Route()
     {
@@ -23,7 +23,32 @@ public class Route
         private readonly Route _route = new Route();
         public List<string> Errors { get; private set; } = [];
 
+        public Builder WithNewId()
+        {
+            return this;
+        }
+
         public Builder WithTitle(string title)
+        {
+            return this;
+        }
+
+        public Builder WithDestination(string from, string to)
+        {
+            return this;
+        }
+
+        public Builder WithDistance(double distance, string dimension)
+        {
+            return this;
+        }
+
+        public Builder WithEstimatedTime(TimeSpan estimatedTime)
+        {
+            return this;
+        }
+
+        public Builder WithPrice(double value, string currency)
         {
             return this;
         }

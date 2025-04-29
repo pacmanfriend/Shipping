@@ -4,20 +4,27 @@ namespace Shipping.Domain.Route.ValueObjects;
 
 public record RouteDistance
 {
-    private RouteDistance(double value)
+    public double Value { get; init; }
+    public string Dimension { get; init; }
+
+    private RouteDistance(double value, string dimension)
     {
         Value = value;
+        Dimension = dimension;
     }
 
-    public double Value { get; init; }
-
-    public static DomainResult<RouteDistance?> New(double value)
+    static DomainResult<RouteDistance?> New(double value, string dimension)
     {
         if (value < 0.0)
         {
             return DomainResult<RouteDistance?>.Fail("Distance is less than zero");
         }
 
-        return DomainResult<RouteDistance>.Ok(new RouteDistance(value))!;
+        return DomainResult<RouteDistance>.Ok(new RouteDistance(value, dimension))!;
+    }
+
+    public static DomainResult<RouteDistance?> FromKilometers(double kilometers)
+    {
+        return New(kilometers, "Kilometers");
     }
 }
