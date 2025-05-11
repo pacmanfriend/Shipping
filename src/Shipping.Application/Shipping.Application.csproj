@@ -16,4 +16,8 @@
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Transportations\Queries\" />
+    </ItemGroup>
+
 </Project>

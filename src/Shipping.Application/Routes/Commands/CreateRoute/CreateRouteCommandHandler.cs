@@ -19,7 +19,7 @@ public class CreateRouteCommandHandler : IRequestHandler<CreateRouteCommand, Ent
             .WithNewId()
             .WithTitle(request.RouteTitle)
             .WithDestination(request.CityFrom, request.CityTo)
-            .WithDistance(request.Distance, request.Dimension)
+            .WithDistance(request.Distance, request.DistanceDimension)
             .WithEstimatedTime(request.EstimatedTime)
             .WithPrice(request.Price, request.Currency)
             .Build();
