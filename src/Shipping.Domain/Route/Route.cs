@@ -1,4 +1,3 @@
-using Shipping.Domain.Common;
 using Shipping.Domain.Common.ValueObjects;
 using Shipping.Domain.Route.ValueObjects;
 
@@ -10,7 +9,7 @@ public class Route
     public RouteTitle Title { get; private set; }
     public CityName From { get; private set; }
     public CityName To { get; private set; }
-    public EstimatedTime EstimatedTime { get; private set; }
+    public TimeSpan EstimatedTime { get; private set; }
     public RouteDistance RouteDistance { get; private set; }
     public Price BasePrice { get; private set; }
 
@@ -34,6 +33,7 @@ public class Route
         public Builder WithNewId()
         {
             var entityId = EntityId.FromGuid(Guid.NewGuid());
+            _route.Id = entityId;
 
             return this;
         }
@@ -67,12 +67,11 @@ public class Route
             return this;
         }
 
-        public Builder WithEstimatedTime(TimeSpan time)
+        public Builder WithEstimatedTime(string time)
         {
-            var estimatedTime = EstimatedTime.New(time);
-
-            _route.EstimatedTime = estimatedTime;
-
+            var t = TimeSpan.Parse(time);
+            
+            _route.EstimatedTime = t;
             return this;
         }
 
