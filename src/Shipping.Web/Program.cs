@@ -1,9 +1,12 @@
+using Microsoft.OpenApi.Models;
 using Shipping.Application;
+using Shipping.Infrastructure;
 using Shipping.Web.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.AddApplicationServices();
+    builder.Services.AddInfrastructureServices();
 
     builder.Services.AddEndpointsApiExplorer();
 
@@ -25,9 +28,12 @@ var app = builder.Build();
     app.UseHsts();
     app.UseHttpsRedirection();
 
-    app.MapRoutesEndpoints();
+    var appGroup = app.MapGroup("/shipping/api");
 
-    app.MapGet("/", () => "Welcome to the Shipping!");
+    appGroup.MapRoutesEndpoints();
+    appGroup.MapVehiclesEndpoints();
+    appGroup.MapDriversEndpoints();
+    appGroup.MapTransportationsEndpoints();
 }
 
 app.Run();
