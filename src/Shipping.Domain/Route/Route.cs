@@ -30,6 +30,14 @@ public class Route
             return this;
         }
 
+        public Builder WithExitingId(Guid id)
+        {
+            var entityId = EntityId.FromGuid(id);
+            _route.Id = entityId;
+
+            return this;
+        }
+
         public Builder WithNewId()
         {
             var entityId = EntityId.FromGuid(Guid.NewGuid());
@@ -70,7 +78,7 @@ public class Route
         public Builder WithEstimatedTime(string time)
         {
             var t = TimeSpan.Parse(time);
-            
+
             _route.EstimatedTime = t;
             return this;
         }

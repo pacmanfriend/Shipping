@@ -9,4 +9,6 @@ public class Driver
     public int Age { get; set; }
     public int Experience { get; set; }
     public double Salary { get; set; }
+
+    public string Fio => $"{FirstName} {LastName}";
 }
