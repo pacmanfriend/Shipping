@@ -32,7 +32,7 @@ public class InMemoryRoutesRepository : IRoutesRepository
             .WithPrice(18000.0, "RUB")
             .Build(),
         new Route.Builder()
-            .WithExitingId(Guid.Parse("b1a2c3d4-e5f6-7890-a1a2-a3a4k5a6a7a8"))
+            .WithExitingId(Guid.Parse("b1a2c3d4-e5f6-7890-a1a2-a3a4b5a6a7a8"))
             .WithTitle("Сочи → Краснодар")
             .WithDestination("Сочи", "Краснодар")
             .WithDistance(300, "KM")
@@ -48,7 +48,7 @@ public class InMemoryRoutesRepository : IRoutesRepository
             .WithPrice(20000.0, "RUB")
             .Build(),
         new Route.Builder()
-            .WithExitingId(Guid.Parse("e1f2d3c-4b5a-6d7e-8f9c-0a0b1c2d3e4f5"))
+            .WithExitingId(Guid.Parse("ee1f2d3c-4b5a-6d7e-8f9c-a0b1c2d3e4f5"))
             .WithTitle("Ростов-на-Дону → Волгоград")
             .WithDestination("Ростов-на-Дону", "Волгоград")
             .WithDistance(470, "KM")
